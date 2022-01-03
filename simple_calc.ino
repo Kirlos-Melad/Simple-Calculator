@@ -1,6 +1,5 @@
-#include <Arduino.h>
-
 /*Function Signatures*/
+
 // Init Functions
 void Arduino_Init();
 void PPI_Init();
@@ -294,7 +293,6 @@ void CalculateEquation(){
   int code = 0;
   code = isStrongOp(num1, num2, '*');
   if(code == 1){
-    //clearData();
     printResult(num1 * num2);
   return;
   } else if (code == 2){
@@ -305,7 +303,10 @@ void CalculateEquation(){
   // if code = 0
   code = isStrongOp(num1, num2, '/');
   if(code == 1){
-    //clearData();
+    if(num2 == 0){
+      printError();
+      return;
+    }
     printResult(num1 / num2);
     return;
   } else if (code == 2){
